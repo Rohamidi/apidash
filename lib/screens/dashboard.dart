@@ -11,6 +11,7 @@ import 'home_page/home_page.dart';
 import 'history/history_page.dart';
 import 'settings_page.dart';
 import 'terminal/terminal_page.dart';
+import 'gsoc_poc/collection_workflow_dashboard_poc.dart';
 
 class Dashboard extends ConsumerWidget {
   const Dashboard({super.key});
@@ -100,6 +101,17 @@ class Dashboard extends ConsumerWidget {
                       kLabelLogs,
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
+                    kVSpacer10,
+                    IconButton(
+                      tooltip: 'GSoC PoC',
+                      isSelected: railIdx == 5,
+                      onPressed: () {
+                        ref.read(navRailIndexStateProvider.notifier).state = 5;
+                      },
+                      icon: const Icon(Icons.account_tree_outlined),
+                      selectedIcon: const Icon(Icons.account_tree_rounded),
+                    ),
+                    Text('PoC', style: Theme.of(context).textTheme.labelSmall),
                   ],
                 ),
                 Expanded(
@@ -152,6 +164,7 @@ class Dashboard extends ConsumerWidget {
                   HistoryPage(),
                   TerminalPage(),
                   SettingsPage(),
+                  CollectionWorkflowDashboardPoc(),
                 ],
               ),
             ),
